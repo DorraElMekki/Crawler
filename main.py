@@ -8,8 +8,8 @@ import shutil
 PROJECT_NAME = 'YahiaProject'
 HOMEPAGE = 'https://www.indeed.fr/jobs?q=jave+&l=france'
 DOMAIN_NAME = get_domain_name(HOMEPAGE)
-QUEUE_FILE = PROJECT_NAME + '/queue.txt'
-CRAWLED_FILE = PROJECT_NAME + '/crawled.txt'
+QUEUE_FILE = f'{PROJECT_NAME}/queue.txt'
+CRAWLED_FILE = f'{PROJECT_NAME}/crawled.txt'
 NUMBER_OF_THREADS = 8
 
 queue = Queue()
@@ -45,7 +45,7 @@ def create_job():
 def crawl():
     queued_links = file_to_set(QUEUE_FILE)
     if len(queued_links) > 0:
-        print("------ We have to list --------- = " + len(queued_links))
+        print(f"------ We have to list --------- = {len(queued_links)}")
         create_job()
 
 
