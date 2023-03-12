@@ -3,15 +3,15 @@ import os
 
 def create_project_dir(directory):
     if not os.path.exists(directory):
-        print("Creating directory..." + directory)
+        print(f"Creating directory...{directory}")
         os.makedirs(directory)
 
 
 # Create queue and crawled files if not created
 def create_data_files(project_name, base_url):
     # a list of waiting url to be crawled
-    queue = project_name + "/queue.txt"
-    crawled = project_name + "/crawled.txt"
+    queue = f"{project_name}/queue.txt"
+    crawled = f"{project_name}/crawled.txt"
     if not os.path.isfile(queue):
         write_file(queue, base_url)
     if not os.path.isfile(crawled):
@@ -20,9 +20,8 @@ def create_data_files(project_name, base_url):
 
 # Create a new file
 def write_file(path, data):
-    f = open(path, 'w')
-    f.write(data)
-    f.close()
+    with open(path, 'w') as f:
+        f.write(data)
 
 
 # Adding file into existing file

@@ -2,11 +2,11 @@ from general import *
 try:
     from googlesearch import search
 except ImportError as e:
-    print("we have a problem " + str(e))
+    print(f"we have a problem {str(e)}")
 import os
 
 PROJECT_NAME = "YahiaProject"
-search_file = PROJECT_NAME + "/search.txt"
+search_file = f"{PROJECT_NAME}/search.txt"
 
 
 def create_search_file():

@@ -23,9 +23,9 @@ class myThread:
         self.location = location
 
     def run(self):
-        print("starting : " + self.name)
+        print(f"starting : {self.name}")
         query(self.url, self.search, self.location, self.counter)
-        print("exiting :" + self.name)
+        print(f"exiting :{self.name}")
 
 
 # parser.add_argument("search",help="Search for a Job/Intern",type=str)
@@ -45,7 +45,7 @@ def query(url, search, location, counter):
     if 'text/html' in response.getheader('Content-Type'):
         page = response.read()
         html_string = page.decode("utf-8")
-        file_name = "/page_" + str(number) + ".html"
+        file_name = f"/page_{str(number)}.html"
         path_file = directory_name + file_name
         if not os.path.isfile(path_file):
             with open(path_file, "w", encoding='utf-8') as f:
@@ -57,11 +57,11 @@ if __name__ == "__main__":
     start = timeit.default_timer()
     for i in range(0, 100, 10):
         try:
-            thread_name = "thread_" + str(i / 10)
+            thread_name = f"thread_{str(i / 10)}"
             _thread = myThread(i / 10, thread_name, i, "https://www.indeed.fr/", "java", "france")
             _thread.run()
         except Exception as ex:
             print(ex)
     end = timeit.default_timer()
-    print("Time Run = " + str(end - start))
+    print(f"Time Run = {str(end - start)}")
     print("exist ..................")
